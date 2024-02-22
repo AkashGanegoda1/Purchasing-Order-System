@@ -1,0 +1,30 @@
+C:\Users\User\Desktop\PDSA(CW)\PDSA(CW)\bin\Debug\PDSA(CW).exe.config
+C:\Users\User\Desktop\PDSA(CW)\PDSA(CW)\bin\Debug\PDSA(CW).exe
+C:\Users\User\Desktop\PDSA(CW)\PDSA(CW)\bin\Debug\PDSA(CW).pdb
+C:\Users\User\Desktop\PDSA(CW)\PDSA(CW)\obj\Debug\PDSA(CW).csproj.AssemblyReference.cache
+C:\Users\User\Desktop\PDSA(CW)\PDSA(CW)\obj\Debug\PDSA(CW).csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\PDSA(CW)\PDSA(CW)\obj\Debug\PDSA(CW).exe
+C:\Users\User\Desktop\PDSA(CW)\PDSA(CW)\obj\Debug\PDSA(CW).pdb
+C:\Users\SCYLINE\Downloads\Telegram Desktop\PDSA(CW)\PDSA(CW)\PDSA(CW)\bin\Debug\PDSA(CW).exe.config
+C:\Users\SCYLINE\Downloads\Telegram Desktop\PDSA(CW)\PDSA(CW)\PDSA(CW)\bin\Debug\PDSA(CW).exe
+C:\Users\SCYLINE\Downloads\Telegram Desktop\PDSA(CW)\PDSA(CW)\PDSA(CW)\bin\Debug\PDSA(CW).pdb
+C:\Users\SCYLINE\Downloads\Telegram Desktop\PDSA(CW)\PDSA(CW)\PDSA(CW)\obj\Debug\PDSA(CW).csproj.AssemblyReference.cache
+C:\Users\SCYLINE\Downloads\Telegram Desktop\PDSA(CW)\PDSA(CW)\PDSA(CW)\obj\Debug\PDSA(CW).csproj.SuggestedBindingRedirects.cache
+C:\Users\SCYLINE\Downloads\Telegram Desktop\PDSA(CW)\PDSA(CW)\PDSA(CW)\obj\Debug\PDSA(CW).csproj.CoreCompileInputs.cache
+C:\Users\SCYLINE\Downloads\Telegram Desktop\PDSA(CW)\PDSA(CW)\PDSA(CW)\obj\Debug\PDSA(CW).exe
+C:\Users\SCYLINE\Downloads\Telegram Desktop\PDSA(CW)\PDSA(CW)\PDSA(CW)\obj\Debug\PDSA(CW).pdb
+C:\Users\User\Desktop\PDSA BN\PDSA(CW)\PDSA(CW)\PDSA(CW)\bin\Debug\PDSA(CW).exe.config
+C:\Users\User\Desktop\PDSA BN\PDSA(CW)\PDSA(CW)\PDSA(CW)\bin\Debug\PDSA(CW).exe
+C:\Users\User\Desktop\PDSA BN\PDSA(CW)\PDSA(CW)\PDSA(CW)\bin\Debug\PDSA(CW).pdb
+C:\Users\User\Desktop\PDSA BN\PDSA(CW)\PDSA(CW)\PDSA(CW)\obj\Debug\PDSA(CW).csproj.AssemblyReference.cache
+C:\Users\User\Desktop\PDSA BN\PDSA(CW)\PDSA(CW)\PDSA(CW)\obj\Debug\PDSA(CW).csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\PDSA BN\PDSA(CW)\PDSA(CW)\PDSA(CW)\obj\Debug\PDSA(CW).exe
+C:\Users\User\Desktop\PDSA BN\PDSA(CW)\PDSA(CW)\PDSA(CW)\obj\Debug\PDSA(CW).pdb
+C:\Users\SCYLINE\Downloads\Telegram Desktop\Desktop\PDSA BN\PDSA(CW)\PDSA(CW)\PDSA(CW)\obj\Debug\PDSA(CW).csproj.AssemblyReference.cache
+C:\Users\SCYLINE\Downloads\Telegram Desktop\Desktop\PDSA BN\PDSA(CW)\PDSA(CW)\PDSA(CW)\obj\Debug\PDSA(CW).csproj.SuggestedBindingRedirects.cache
+C:\Users\SCYLINE\Downloads\Telegram Desktop\Desktop\PDSA BN\PDSA(CW)\PDSA(CW)\PDSA(CW)\obj\Debug\PDSA(CW).csproj.CoreCompileInputs.cache
+C:\Users\SCYLINE\Downloads\Telegram Desktop\Desktop\PDSA BN\PDSA(CW)\PDSA(CW)\PDSA(CW)\obj\Debug\PDSA(CW).exe
+C:\Users\SCYLINE\Downloads\Telegram Desktop\Desktop\PDSA BN\PDSA(CW)\PDSA(CW)\PDSA(CW)\obj\Debug\PDSA(CW).pdb
+C:\Users\SCYLINE\Downloads\Telegram Desktop\Desktop\PDSA BN\PDSA(CW)\PDSA(CW)\PDSA(CW)\bin\Debug\PDSA(CW).exe.config
+C:\Users\SCYLINE\Downloads\Telegram Desktop\Desktop\PDSA BN\PDSA(CW)\PDSA(CW)\PDSA(CW)\bin\Debug\PDSA(CW).exe
+C:\Users\SCYLINE\Downloads\Telegram Desktop\Desktop\PDSA BN\PDSA(CW)\PDSA(CW)\PDSA(CW)\bin\Debug\PDSA(CW).pdb
