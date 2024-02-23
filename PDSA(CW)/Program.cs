@@ -253,7 +253,7 @@ namespace PDSA_CW
     {
         static void Main(string[] args)
         {
-            POOrderSystem orderSystem = new POOrderSystem();
+            POOrderSystem orderSystem = new POOrderSystem(); // Creating an object of the class
 
             Console.WriteLine("-----------------------------");
             Console.WriteLine("Purchasing Order System (POS)");
@@ -274,7 +274,7 @@ namespace PDSA_CW
                 Console.Write("\nSelect an option: ");
                 string input = Console.ReadLine();
 
-                switch (input)
+                switch (input) // Handling the user inputs by using Switch
                 {
                     case "1":
                         Console.WriteLine("\nEnter Order details");
@@ -284,8 +284,9 @@ namespace PDSA_CW
                         while (true)
                         {
                             Console.Write("Order ID: ");
-                            string inputs = Console.ReadLine();
+                            string inputs = Console.ReadLine(); // Taking user inputs
 
+                            // Validations
                             if (string.IsNullOrEmpty(inputs))
                             {
                                 Console.WriteLine("Order ID cannot be null or empty.");
@@ -300,22 +301,24 @@ namespace PDSA_CW
                             }
                             else
                             {
-                                break;
+                                break; // Break the loop if one of the above cases triggered
                             }
                         }
 
-                        string supplier, address, productName;
+                        string supplier, address, productName; // Declaring Variables
 
                         do
                         {
                             Console.Write("Supplier: ");
                             supplier = Console.ReadLine();
+
+                            // Validate if the input is null or empty
                             if (string.IsNullOrEmpty(supplier))
                             {
                                 Console.WriteLine("Supplier cannot be null or empty.");
                             }
 
-                        } while (string.IsNullOrEmpty(supplier));
+                        } while (string.IsNullOrEmpty(supplier)); // While the input is null or empty user should enter values again
 
                         do
                         {
