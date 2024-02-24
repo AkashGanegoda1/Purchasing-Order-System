@@ -28,3 +28,11 @@ C:\Users\SCYLINE\Downloads\Telegram Desktop\Desktop\PDSA BN\PDSA(CW)\PDSA(CW)\PD
 C:\Users\SCYLINE\Downloads\Telegram Desktop\Desktop\PDSA BN\PDSA(CW)\PDSA(CW)\PDSA(CW)\bin\Debug\PDSA(CW).exe.config
 C:\Users\SCYLINE\Downloads\Telegram Desktop\Desktop\PDSA BN\PDSA(CW)\PDSA(CW)\PDSA(CW)\bin\Debug\PDSA(CW).exe
 C:\Users\SCYLINE\Downloads\Telegram Desktop\Desktop\PDSA BN\PDSA(CW)\PDSA(CW)\PDSA(CW)\bin\Debug\PDSA(CW).pdb
+C:\Users\DELL\Desktop\Sadew PDSA\PDSA(CW)\bin\Debug\PDSA(CW).exe.config
+C:\Users\DELL\Desktop\Sadew PDSA\PDSA(CW)\bin\Debug\PDSA(CW).exe
+C:\Users\DELL\Desktop\Sadew PDSA\PDSA(CW)\bin\Debug\PDSA(CW).pdb
+C:\Users\DELL\Desktop\Sadew PDSA\PDSA(CW)\obj\Debug\PDSA(CW).csproj.AssemblyReference.cache
+C:\Users\DELL\Desktop\Sadew PDSA\PDSA(CW)\obj\Debug\PDSA(CW).csproj.SuggestedBindingRedirects.cache
+C:\Users\DELL\Desktop\Sadew PDSA\PDSA(CW)\obj\Debug\PDSA(CW).csproj.CoreCompileInputs.cache
+C:\Users\DELL\Desktop\Sadew PDSA\PDSA(CW)\obj\Debug\PDSA(CW).exe
+C:\Users\DELL\Desktop\Sadew PDSA\PDSA(CW)\obj\Debug\PDSA(CW).pdb

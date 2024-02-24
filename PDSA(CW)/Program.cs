@@ -196,7 +196,14 @@ namespace PDSA_CW
         }
         public void DisplayOrderss()
         {
-            Display(root);
+            if (root == null)
+            {
+                Console.WriteLine("No orders to display.");
+            }
+            else
+            {
+                Display(root);
+            }
         }
 
         private void Display(TreeNode node)
