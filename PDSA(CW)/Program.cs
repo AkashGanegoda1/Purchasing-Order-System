@@ -3,19 +3,22 @@ using System.Collections.Generic;
 
 namespace PDSA_CW
 {
-    class Order
+    class Order   // Class representing an order
     {
-        public int OrderId;
-        public string Supplier;
-        public string Address;
-        public int Vat;
-        public string ProductName;
-        public int Quantity;
-        public float Price;
-        public DateTime Date;
-        public float Total;
+        // Declaring Variables
 
-        public Order(int orderId, string supplier, string address, int vat, string productName, int quantity, float price)
+        public int OrderId; // Unique identifier for the order
+        public string Supplier; // Name of the supplier
+        public string Address;  // Address of the Supplier
+        public int Vat; // VAT percentage
+        public string ProductName; // Name of the product
+        public int Quantity; //Quantity of the product ordered
+        public float Price; // Price per unit of the product
+        public DateTime Date;  // Date and time of the order
+        public float Total; // Total cost of the order
+
+        // Constructor for creating an order object
+        public Order(int orderId, string supplier, string address, int vat, string productName, int quantity, float price) 
         {
             OrderId = orderId;
             Supplier = supplier;
@@ -24,11 +27,11 @@ namespace PDSA_CW
             ProductName = productName;
             Quantity = quantity;
             Price = price;
-            Date = DateTime.Now;
-            Total = CalculateTotal();
+            Date = DateTime.Now; // Current date and time
+            Total = CalculateTotal();  // Calculate total cost including VAT
         }
 
-        private float CalculateTotal()
+        private float CalculateTotal()  // Method to calculate the total cost of the order including VAT
         {
             float subtotal = Quantity * Price;
             float vatAmount = (subtotal * Vat) / 100;
@@ -38,11 +41,12 @@ namespace PDSA_CW
 
     class TreeNode
     {
-        public Order Order;
-        public TreeNode Left;
-        public TreeNode Right;
+        // Class representing a node in a binary search tree
+        public Order Order; // Order associated with the node
+        public TreeNode Left; // Reference to the left child node
+        public TreeNode Right; // Reference to the right child node
 
-        public TreeNode(Order order)
+        public TreeNode(Order order)   // Constructor for creating a tree node 
         {
             Order = order;
             Left = null;
@@ -50,12 +54,12 @@ namespace PDSA_CW
         }
     }
 
-    class POOrderSystem
+    class POOrderSystem    // Class representing a purchasing order system
     {
-        private TreeNode root;
-        private List<Order> sortedOrders;
+        private TreeNode root;   // Root node of the binary search tree
+        private List<Order> sortedOrders;  // List to store sorted orders
 
-        public POOrderSystem()
+        public POOrderSystem()  // Constructor for creating a new purchasing order system
         {
             sortedOrders = new List<Order>();
         }
@@ -64,7 +68,7 @@ namespace PDSA_CW
         {
             if (OrderExists(order.OrderId))
             {
-                Console.WriteLine("Order ID already exists!");
+                Console.WriteLine("Order ID already exists!");   
                 return;
             }
 
