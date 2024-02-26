@@ -7,18 +7,20 @@ namespace PDSA_CW
     {
         // Declaring Variables
 
-        public int OrderId; // Unique identifier for the order
-        public string Supplier; // Name of the supplier
-        public string Address;  // Address of the Supplier
-        public int Vat; // VAT percentage
-        public string ProductName; // Name of the product
-        public int Quantity; //Quantity of the product ordered
-        public float Price; // Price per unit of the product
-        public DateTime Date;  // Date and time of the order
-        public float Total; // Total cost of the order
+        public int OrderId; 
+        public string Supplier;
+        public string Address;  
+        public int Vat; 
+        public string ProductName;
+        public int Quantity; 
+        public float Price; 
+        public DateTime Date;  
+        public float Total; 
+
+
 
         // Constructor for creating an order object
-        public Order(int orderId, string supplier, string address, int vat, string productName, int quantity, float price) 
+        public Order(int orderId, string supplier, string address, int vat, string productName, int quantity, float price)
         {
             OrderId = orderId;
             Supplier = supplier;
@@ -28,7 +30,7 @@ namespace PDSA_CW
             Quantity = quantity;
             Price = price;
             Date = DateTime.Now; // Current date and time
-            Total = CalculateTotal();  // Calculate total cost including VAT
+            Total = CalculateTotal();  // Calculated total cost including VAT
         }
 
         private float CalculateTotal()  // Method to calculate the total cost of the order including VAT
@@ -39,9 +41,10 @@ namespace PDSA_CW
         }
     }
 
+
     class TreeNode
     {
-        // Class representing a node in a binary search tree
+
         public Order Order; // Order associated with the node
         public TreeNode Left; // Reference to the left child node
         public TreeNode Right; // Reference to the right child node
@@ -64,15 +67,15 @@ namespace PDSA_CW
             sortedOrders = new List<Order>();
         }
 
-        public void AddOrder(Order order)
+        public void AddOrder(Order order)  // Method to add a new order to binary tree
         {
-            if (OrderExists(order.OrderId))
+            if (OrderExists(order.OrderId)) // Check if the order ID already exists
             {
-                Console.WriteLine("Order ID already exists!");   
+                Console.WriteLine("Order ID already exists!");
                 return;
             }
 
-            if (root == null)
+            if (root == null)   // Add the order to the binary tree
             {
                 root = new TreeNode(order);
             }
@@ -82,7 +85,7 @@ namespace PDSA_CW
             }
         }
 
-        private void AddOrders(TreeNode node, Order order)
+        private void AddOrders(TreeNode node, Order order)  // Private method to  add orders to the binary tree
         {
             if (order.OrderId < node.Order.OrderId)
             {
@@ -108,21 +111,21 @@ namespace PDSA_CW
             }
         }
 
-        public void UpdateOrder(int orderId, Order newOrder) // update order method
+        public void UpdateOrder(int orderId, Order newOrder)    // update an existing order
 
         {
-            if (!OrderExists(orderId))
+            if (!OrderExists(orderId)) // Check if the order to update exists
             {
                 Console.WriteLine("Order with ID " + orderId + " does not exist.");
                 return;
             }
 
-            root = UpdateOrders(root, orderId, newOrder);
+            root = UpdateOrders(root, orderId, newOrder);    // Update the order in the binary tree
             Console.WriteLine("Order Updated Successfully");
 
         }
 
-        private TreeNode UpdateOrders(TreeNode node, int orderId, Order newOrder)
+        private TreeNode UpdateOrders(TreeNode node, int orderId, Order newOrder)     // Private method to update orders in the binary tree
         {
             if (node == null)
                 return null;
@@ -137,20 +140,20 @@ namespace PDSA_CW
             return node;
         }
 
-        public void DeleteOrder(int orderId)
+        public void DeleteOrder(int orderId)    // Method to delete an existing order
         {
-            if (!OrderExists(orderId))
+            if (!OrderExists(orderId))   // Check if the order to delete exists
             {
                 Console.WriteLine("Order with ID " + orderId + " does not exist.");
                 return;
             }
 
-            root = DeleteOrders(root, orderId);
+            root = DeleteOrders(root, orderId);   // Delete the order from the binary tree
             Console.WriteLine("Order Deleted Successfully");
 
         }
 
-        private TreeNode DeleteOrders(TreeNode node, int orderId) // deleting orders using tree node
+        private TreeNode DeleteOrders(TreeNode node, int orderId)  // Private method to delete orders from the binary tree
         {
             if (node == null)
                 return null;
@@ -199,7 +202,6 @@ namespace PDSA_CW
             else
                 return true;
         }
-
         public void DisplayOrderss()
         {
             if (root == null)
