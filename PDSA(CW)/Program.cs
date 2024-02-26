@@ -150,7 +150,7 @@ namespace PDSA_CW
 
         }
 
-        private TreeNode DeleteOrders(TreeNode node, int orderId)
+        private TreeNode DeleteOrders(TreeNode node, int orderId) // deleting orders using tree node
         {
             if (node == null)
                 return null;
