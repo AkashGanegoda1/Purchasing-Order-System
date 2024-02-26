@@ -187,18 +187,7 @@ namespace PDSA_CW
             return OrderExists(root, orderId);
         }
 
-        private bool OrderExists(TreeNode node, int orderId)
-        {
-            if (node == null)
-                return false;
-
-            if (orderId < node.Order.OrderId)
-                return OrderExists(node.Left, orderId);
-            else if (orderId > node.Order.OrderId)
-                return OrderExists(node.Right, orderId);
-            else
-                return true;
-        }
+        
         public void DisplayOrderss()
         {
             if (root == null)
