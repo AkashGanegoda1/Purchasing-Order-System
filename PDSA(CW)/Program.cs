@@ -169,15 +169,15 @@ namespace PDSA_CW
                 else if (node.Right == null)
                     return node.Left;
 
-                TreeNode successor = MinValue(node.Right);
-                node.Order = successor.Order;
-                node.Right = DeleteOrders(node.Right, node.Order.OrderId);
+                TreeNode successor = MinValue(node.Right);    // Node has two children and find the successor
+                node.Order = successor.Order;      // Replace the node's data with the successor's data
+                node.Right = DeleteOrders(node.Right, node.Order.OrderId);  // Delete the successor node
             }
 
             return node;
         }
 
-        private TreeNode MinValue(TreeNode node)
+        private TreeNode MinValue(TreeNode node) //  method to find the node with the minimum value in the subtree
         {
             while (node.Left != null)
             {
@@ -185,12 +185,12 @@ namespace PDSA_CW
             }
             return node;
         }
-        public bool OrderExists(int orderId)
+        public bool OrderExists(int orderId) // Method to check if an order with a given ID exists
         {
             return OrderExists(root, orderId);
         }
 
-        private bool OrderExists(TreeNode node, int orderId)
+        private bool OrderExists(TreeNode node, int orderId) // Private method to check if an order with a given ID exists
         {
             if (node == null)
                 return false;
@@ -202,7 +202,7 @@ namespace PDSA_CW
             else
                 return true;
         }
-        public void DisplayOrderss()
+        public void DisplayOrderss()     // Method to display all orders in the binary tree
         {
             if (root == null)
             {
@@ -223,7 +223,7 @@ namespace PDSA_CW
                 Display(node.Right);
             }
         }
-        public void DisplayOrders()
+        public void DisplayOrders()         // Method to display all orders in the sorted order
         {
             if (sortedOrders.Count == 0)
             {
@@ -238,7 +238,7 @@ namespace PDSA_CW
             }
         }
 
-        public void SortOrders(bool ascending)
+        public void SortOrders(bool ascending)   // Method to sort orders based on total cost
         {
             sortedOrders.Clear();
             GetOrdersInOrder(root, sortedOrders);
