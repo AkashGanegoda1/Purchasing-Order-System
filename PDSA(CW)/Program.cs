@@ -268,7 +268,7 @@ namespace PDSA_CW
     {
         static void Main(string[] args)
         {
-            POOrderSystem orderSystem = new POOrderSystem(); // Creating an object of the class
+            POOrderSystem orderSystem = new POOrderSystem(); // Creating an object of the puchase order system class
 
             Console.WriteLine("-----------------------------");
             Console.WriteLine("Purchasing Order System (POS)");
@@ -276,7 +276,7 @@ namespace PDSA_CW
 
             bool exit = false;
 
-            while (!exit)
+            while (!exit)   // Displaying options
             {
                 Console.WriteLine("\nOptions:\n");
                 Console.WriteLine("1. Add Order");
@@ -387,6 +387,7 @@ namespace PDSA_CW
                         break;
 
                     case "2":
+                        // Updating an existing order
                         Console.WriteLine("\nUpdate Order");
                         Console.WriteLine("************\n");
                         Console.Write("Enter the Order ID to update: ");
@@ -436,6 +437,7 @@ namespace PDSA_CW
                         break;
 
                     case "3":
+                        // Deleting an existing order
                         Console.WriteLine("\nDelete Order");
                         Console.WriteLine("************");
                         Console.Write("\nEnter the Order ID to delete: ");
@@ -451,30 +453,34 @@ namespace PDSA_CW
                         break;
 
                     case "4":
+                        // Displaying all orders
                         Console.WriteLine("\nOrder/s Summary");
                         Console.WriteLine("***************\n");
                         orderSystem.DisplayOrderss();
                         break;
 
                     case "5":
+                        // Sorting orders from cheapest to most expensive
                         orderSystem.SortOrders(true);
                         Console.WriteLine("\nOrders sorted from Cheapest to Most Expensive:\n");
                         orderSystem.DisplayOrders();
                         break;
 
                     case "6":
+                        // Sorting orders from most expensive to cheapest
                         orderSystem.SortOrders(false);
                         Console.WriteLine("\nOrders sorted from Most Expensive to Cheapest:\n");
                         orderSystem.DisplayOrders();
                         break;
 
                     case "7":
+                        // Exiting the program
                         exit = true;
                         Console.WriteLine("\nExiting...");
                         break;
 
                     default:
-                        Console.WriteLine("\nInvalid option. Please select a valid option (1-7).");
+                        Console.WriteLine("\nInvalid option. Please select a valid option (1-7).");  // Invalid option
                         break;
                 }
             }
