@@ -68,6 +68,23 @@ namespace PDSA_CW
         }
 
 
+        public void AddOrder(Order order)  // Method to add a new order to binary tree
+        {
+            if (OrderExists(order.OrderId)) // Check if the order ID already exists
+            {
+                Console.WriteLine("Order ID already exists!");
+                return;
+            }
+
+            if (root == null)   // Add the order to the binary tree
+            {
+                root = new TreeNode(order);
+            }
+            else
+            {
+                AddOrders(root, order);
+            }
+        }
         private void AddOrders(TreeNode node, Order order)  // Private method to  add orders to the binary tree
         {
             if (order.OrderId < node.Order.OrderId)
