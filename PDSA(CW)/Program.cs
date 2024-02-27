@@ -253,7 +253,7 @@ namespace PDSA_CW
             }
         }
 
-        private void GetOrdersInOrder(TreeNode node, List<Order> orders)
+        private void GetOrdersInOrder(TreeNode node, List<Order> orders) // method to getorders based on treenode
         {
             if (node != null)
             {
@@ -266,7 +266,7 @@ namespace PDSA_CW
 
     class Program
     {
-        static void Main(string[] args)
+        static void Main(string[] args) // main method 
         {
             POOrderSystem orderSystem = new POOrderSystem(); // Creating an object of the puchase order system class
 
