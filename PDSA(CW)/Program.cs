@@ -3,19 +3,20 @@ using System.Collections.Generic;
 
 namespace PDSA_CW
 {
-    class Order   // Class representing an order
+    // Class representing an order
+    class Order
     {
         // Declaring Variables
 
-        public int OrderId; 
+        public int OrderId;
         public string Supplier;
-        public string Address;  
-        public int Vat; 
+        public string Address;
+        public int Vat;
         public string ProductName;
-        public int Quantity; 
-        public float Price; 
-        public DateTime Date;  
-        public float Total; 
+        public int Quantity;
+        public float Price;
+        public DateTime Date;
+        public float Total;
 
 
 
@@ -29,11 +30,13 @@ namespace PDSA_CW
             ProductName = productName;
             Quantity = quantity;
             Price = price;
-            Date = DateTime.Now; // Current date and time
+            Date = DateTime.Now;       // Current date and time
             Total = CalculateTotal();  // Calculated total cost including VAT
         }
 
-        private float CalculateTotal()  // Method to calculate the total cost of the order including VAT
+
+        // Method to calculate the total cost of the order including VAT
+        private float CalculateTotal()
         {
             float subtotal = Quantity * Price;
             float vatAmount = (subtotal * Vat) / 100;
@@ -49,7 +52,9 @@ namespace PDSA_CW
         public TreeNode Left; // Reference to the left child node
         public TreeNode Right; // Reference to the right child node
 
-        public TreeNode(Order order)   // Constructor for creating a tree node 
+
+        // Constructor for creating a tree node 
+        public TreeNode(Order order)
         {
             Order = order;
             Left = null;
@@ -57,26 +62,32 @@ namespace PDSA_CW
         }
     }
 
-    class POOrderSystem    // Class representing a purchasing order system
+    // Class representing a purchasing order
+    class POOrderSystem
     {
         private TreeNode root;   // Root node of the binary search tree
         private List<Order> sortedOrders;  // List to store sorted orders
 
-        public POOrderSystem()  // Constructor for creating a new purchasing order system
+
+        // Constructor for creating a new purchasing order
+        public POOrderSystem()
         {
             sortedOrders = new List<Order>();
         }
 
-
-        public void AddOrder(Order order)  // Method to add a new order to binary tree
+        // Method to add a new order to binary tree
+        public void AddOrder(Order order)
         {
-            if (OrderExists(order.OrderId)) // Check if the order ID already exists
+
+            // Check if the order ID already exists
+            if (OrderExists(order.OrderId))
             {
                 Console.WriteLine("Order ID already exists!");
                 return;
             }
 
-            if (root == null)   // Add the order to the binary tree
+            // if the root is empty then making the order as root else add the order normally
+            if (root == null)
             {
                 root = new TreeNode(order);
             }
@@ -85,97 +96,111 @@ namespace PDSA_CW
                 AddOrders(root, order);
             }
         }
-        private void AddOrders(TreeNode node, Order order)  // Private method to  add orders to the binary tree
+
+
+        // Private method to add orders to the binary tree
+        private void AddOrders(TreeNode node, Order order)
         {
+
+            // if the orderid in the Order class is less than the orderid in Tree node class, order will be added to the left
             if (order.OrderId < node.Order.OrderId)
             {
+
+                // if the left node is empty add the order to the left node
                 if (node.Left == null)
                 {
+                    // Add the Order as a new left child TreeNode
                     node.Left = new TreeNode(order);
                 }
                 else
                 {
+                    // Otherwise AddOrders on the left subtree
                     AddOrders(node.Left, order);
                 }
             }
+
+            // if the orderid in the Order class is Greater than the orderid in Tree node class, order will be added to the Right
             else if (order.OrderId > node.Order.OrderId)
             {
+                // If the right child node of the current TreeNode is empty
                 if (node.Right == null)
                 {
+                    // Add the Order as a new right child TreeNode
                     node.Right = new TreeNode(order);
                 }
                 else
                 {
+                    // Otherwise AddOrders on the right subtree
                     AddOrders(node.Right, order);
                 }
             }
         }
 
-        public void UpdateOrder(int orderId, Order newOrder)    // update an existing order
+        // Method to update an existing order
+        public void UpdateOrder(int orderId, Order newOrder)
 
         {
-            if (!OrderExists(orderId)) // Check if the order to update exists
-            {
-                Console.WriteLine("Order with ID " + orderId + " does not exist.");
-                return;
-            }
-
-            root = UpdateOrders(root, orderId, newOrder);    // Update the order in the binary tree
-            Console.WriteLine("Order Updated Successfully");
-
+            root = UpdateOrders(root, orderId, newOrder); // Call the UpdateOrders starting from the root
         }
 
-        private TreeNode UpdateOrders(TreeNode node, int orderId, Order newOrder)     // Private method to update orders in the binary tree
+
+        // Private method to update orders in the binary tree
+        private TreeNode UpdateOrders(TreeNode node, int orderId, Order newOrder)
         {
+
+            //If the node is null return null
             if (node == null)
                 return null;
 
+            // If the orderId to update is less than the current node's orderId, go left
             if (orderId < node.Order.OrderId)
                 node.Left = UpdateOrders(node.Left, orderId, newOrder);
+
+            // If the orderId to update is greater than the current node's orderId, go right
             else if (orderId > node.Order.OrderId)
                 node.Right = UpdateOrders(node.Right, orderId, newOrder);
             else
-                node.Order = newOrder;
+                node.Order = newOrder; // Update the order details with the newOrder provided
 
-            return node;
+            return node; // Return the updated node
         }
 
-        public void DeleteOrder(int orderId)    // Method to delete an existing order
+        public void DeleteOrder(int orderId)  // Method to delete an existing order
         {
-            if (!OrderExists(orderId))   // Check if the order to delete exists
-            {
-                Console.WriteLine("Order with ID " + orderId + " does not exist.");
-                return;
-            }
-
-            root = DeleteOrders(root, orderId);   // Delete the order from the binary tree
-            Console.WriteLine("Order Deleted Successfully");
-
+            root = DeleteOrders(root, orderId);
         }
 
         private TreeNode DeleteOrders(TreeNode node, int orderId)  // Private method to delete orders from the binary tree
         {
+            //If the node is null, return null
             if (node == null)
                 return null;
 
+            // If the order ID to delete is less than the current node's order ID, go to the left node.
             if (orderId < node.Order.OrderId)
                 node.Left = DeleteOrders(node.Left, orderId);
+
+            //If the order ID to delete is greater than the current node's order ID, go to the right node.
             else if (orderId > node.Order.OrderId)
                 node.Right = DeleteOrders(node.Right, orderId);
             else
             {
                 if (node.Left == null)
-                    return node.Right;
-                else if (node.Right == null)
-                    return node.Left;
+                    return node.Right; // Return right child if left child is null
 
-                TreeNode successor = MinValue(node.Right);    // Node has two children and find the successor
-                node.Order = successor.Order;      // Replace the node's data with the successor's data
-                node.Right = DeleteOrders(node.Right, node.Order.OrderId);  // Delete the successor node
+                else if (node.Right == null)
+                    return node.Left; // Return left child if right child is null
+
+                TreeNode nextnode = MinValue(node.Right); // Node has two children and find the nextnode
+
+                node.Order = nextnode.Order; // Replace the node's data with the nextnode's data
+
+                node.Right = DeleteOrders(node.Right, node.Order.OrderId); // Delete the nextnode's data
             }
 
-            return node;
+            return node; // Return the node
         }
+
 
         private TreeNode MinValue(TreeNode node) //  method to find the node with the minimum value in the subtree
         {
@@ -253,7 +278,7 @@ namespace PDSA_CW
             }
         }
 
-        private void GetOrdersInOrder(TreeNode node, List<Order> orders) // method to getorders based on treenode
+        private void GetOrdersInOrder(TreeNode node, List<Order> orders)
         {
             if (node != null)
             {
@@ -266,9 +291,9 @@ namespace PDSA_CW
 
     class Program
     {
-        static void Main(string[] args) // main method 
+        static void Main(string[] args)
         {
-            POOrderSystem orderSystem = new POOrderSystem(); // Creating an object of the puchase order system class
+            POOrderSystem orderSystem = new POOrderSystem(); // Creating an object of the class
 
             Console.WriteLine("-----------------------------");
             Console.WriteLine("Purchasing Order System (POS)");
