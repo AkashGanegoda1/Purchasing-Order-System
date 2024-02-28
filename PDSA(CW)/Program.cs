@@ -340,16 +340,22 @@ namespace PDSA_CW
     {
         static void Main(string[] args)
         {
-            POOrderSystem orderSystem = new POOrderSystem(); // Creating an object of the class
+            // Creating an object of the puchase order system class
+            POOrderSystem orderSystem = new POOrderSystem();
 
+            //Header for the Purchasing Order System
             Console.WriteLine("-----------------------------");
             Console.WriteLine("Purchasing Order System (POS)");
             Console.WriteLine("-----------------------------");
 
             bool exit = false;
 
-            while (!exit)   // Displaying options
+
+            // Loop to continuously display options until the user choose to exit
+            while (!exit)
             {
+
+                // Displaying options
                 Console.WriteLine("\nOptions:\n");
                 Console.WriteLine("1. Add Order");
                 Console.WriteLine("2. Update Order");
@@ -359,11 +365,16 @@ namespace PDSA_CW
                 Console.WriteLine("6. Sort Orders from Most Expensive to Cheapest");
                 Console.WriteLine("7. Exit");
                 Console.Write("\nSelect an option: ");
+
+                // Reading user input from the options
                 string input = Console.ReadLine();
 
-                switch (input) // Handling the user inputs by using Switch
+                // Switch statement to handle user selected options
+                switch (input)
                 {
                     case "1":
+
+                        // Adding a Order Process
                         Console.WriteLine("\nEnter Order details");
                         Console.WriteLine("*******************\n");
 
@@ -371,7 +382,7 @@ namespace PDSA_CW
                         while (true)
                         {
                             Console.Write("Order ID: ");
-                            string inputs = Console.ReadLine(); // Taking user inputs
+                            string inputs = Console.ReadLine();
 
                             // Validations
                             if (string.IsNullOrEmpty(inputs))
@@ -456,6 +467,7 @@ namespace PDSA_CW
 
                         Order order = new Order(orderId, supplier, address, vat, productName, quantity, price);
                         orderSystem.AddOrder(order);
+                        Console.WriteLine("\nOrder Added Successfully");
                         break;
 
                     case "2":
@@ -501,6 +513,7 @@ namespace PDSA_CW
 
                             Order updatedOrder = new Order(updateOrderId, updatedSupplier, updatedAddress, updatedVat, updatedProductName, updatedQuantity, updatedPrice);
                             orderSystem.UpdateOrder(updateOrderId, updatedOrder);
+                            Console.WriteLine("\nOrder Updated Successfully");
                         }
                         else
                         {
@@ -517,6 +530,7 @@ namespace PDSA_CW
                         if (orderSystem.OrderExists(deleteOrderId))
                         {
                             orderSystem.DeleteOrder(deleteOrderId);
+                            Console.WriteLine("Order Deleted Successfully");
                         }
                         else
                         {
@@ -547,12 +561,13 @@ namespace PDSA_CW
 
                     case "7":
                         // Exiting the program
-                        exit = true;
                         Console.WriteLine("\nExiting...");
+                        exit = true;
                         break;
 
                     default:
-                        Console.WriteLine("\nInvalid option. Please select a valid option (1-7).");  // Invalid option
+                        // Invalid option
+                        Console.WriteLine("\nInvalid option. Please select a valid option (1-7).");
                         break;
                 }
             }
