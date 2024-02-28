@@ -321,10 +321,16 @@ namespace PDSA_CW
 
         private void GetOrdersInOrder(TreeNode node, List<Order> orders)
         {
+            // Check if the current node is not null
             if (node != null)
             {
+                // traverse the left subtree
                 GetOrdersInOrder(node.Left, orders);
+
+                // Add the order associated with the current node to the list
                 orders.Add(node.Order);
+
+                // traverse the right subtree
                 GetOrdersInOrder(node.Right, orders);
             }
         }
