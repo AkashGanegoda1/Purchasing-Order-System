@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
+
 namespace PDSA_CW
 {
     // Class representing an order
@@ -8,32 +9,31 @@ namespace PDSA_CW
     {
         // Declaring Variables
 
-        public int OrderId;
-        public string Supplier;
-        public string Address;
-        public int Vat;
-        public string ProductName;
-        public int Quantity;
-        public float Price;
-        public DateTime Date;
-        public float Total;
+        private int OrderId;
+        private string Supplier;
+        private string Address;
+        private int Vat;
+        private string ProductName;
+        private int Quantity;
+        private float Price;
+        private DateTime Date;
+        private float Total;
 
 
 
         // Constructor for creating an order object
         public Order(int orderId, string supplier, string address, int vat, string productName, int quantity, float price)
         {
-            OrderId = orderId;
-            Supplier = supplier;
-            Address = address;
-            Vat = vat;
-            ProductName = productName;
-            Quantity = quantity;
-            Price = price;
-            Date = DateTime.Now;       // Current date and time
-            Total = CalculateTotal();  // Calculated total cost including VAT
+            this.OrderId = orderId;
+            this.Supplier = supplier;
+            this.Address = address;
+            this.Vat = vat;
+            this.ProductName = productName;
+            this.Quantity = quantity;
+            this.Price = price;
+            this.Date = DateTime.Now;       // Current date and time
+            this.Total = CalculateTotal();  // Calculated total cost including VAT
         }
-
 
         // Method to calculate the total cost of the order including VAT
         private float CalculateTotal()
@@ -42,9 +42,55 @@ namespace PDSA_CW
             float vatAmount = (subtotal * Vat) / 100;
             return subtotal + vatAmount;
         }
+
+        // Get methods to access private variables
+        public int GetOrderId()
+        {
+            return OrderId;
+        }
+
+        public string GetSupplier()
+        {
+            return Supplier;
+        }
+
+        public string GetAddress()
+        {
+            return Address;
+        }
+
+        public int GetVat()
+        {
+            return Vat;
+        }
+
+        public string GetProductName()
+        {
+            return ProductName;
+        }
+
+        public int GetQuantity()
+        {
+            return Quantity;
+        }
+
+        public float GetPrice()
+        {
+            return Price;
+        }
+
+        public DateTime GetDate()
+        {
+            return Date;
+        }
+
+        public float GetTotal()
+        {
+            return Total;
+        }
     }
 
-
+    // Class representing a node in the binary search tree
     class TreeNode
     {
 
@@ -78,14 +124,6 @@ namespace PDSA_CW
         // Method to add a new order to binary tree
         public void AddOrder(Order order)
         {
-
-            // Check if the order ID already exists
-            if (OrderExists(order.OrderId))
-            {
-                Console.WriteLine("Order ID already exists!");
-                return;
-            }
-
             // if the root is empty then making the order as root else add the order normally
             if (root == null)
             {
@@ -103,7 +141,7 @@ namespace PDSA_CW
         {
 
             // if the orderid in the Order class is less than the orderid in Tree node class, order will be added to the left
-            if (order.OrderId < node.Order.OrderId)
+            if (order.GetOrderId() < node.Order.GetOrderId())
             {
 
                 // if the left node is empty add the order to the left node
@@ -120,7 +158,7 @@ namespace PDSA_CW
             }
 
             // if the orderid in the Order class is Greater than the orderid in Tree node class, order will be added to the Right
-            else if (order.OrderId > node.Order.OrderId)
+            else if (order.GetOrderId() > node.Order.GetOrderId())
             {
                 // If the right child node of the current TreeNode is empty
                 if (node.Right == null)
@@ -153,11 +191,11 @@ namespace PDSA_CW
                 return null;
 
             // If the orderId to update is less than the current node's orderId, go left
-            if (orderId < node.Order.OrderId)
+            if (orderId < node.Order.GetOrderId())
                 node.Left = UpdateOrders(node.Left, orderId, newOrder);
 
             // If the orderId to update is greater than the current node's orderId, go right
-            else if (orderId > node.Order.OrderId)
+            else if (orderId > node.Order.GetOrderId())
                 node.Right = UpdateOrders(node.Right, orderId, newOrder);
             else
                 node.Order = newOrder; // Update the order details with the newOrder provided
@@ -177,11 +215,11 @@ namespace PDSA_CW
                 return null;
 
             // If the order ID to delete is less than the current node's order ID, go to the left node.
-            if (orderId < node.Order.OrderId)
+            if (orderId < node.Order.GetOrderId())
                 node.Left = DeleteOrders(node.Left, orderId);
 
             //If the order ID to delete is greater than the current node's order ID, go to the right node.
-            else if (orderId > node.Order.OrderId)
+            else if (orderId > node.Order.GetOrderId())
                 node.Right = DeleteOrders(node.Right, orderId);
             else
             {
@@ -195,7 +233,7 @@ namespace PDSA_CW
 
                 node.Order = nextnode.Order; // Replace the node's data with the nextnode's data
 
-                node.Right = DeleteOrders(node.Right, node.Order.OrderId); // Delete the nextnode's data
+                node.Right = DeleteOrders(node.Right, nextnode.Order.GetOrderId()); // Delete the nextnode's data
             }
 
             return node; // Return the node
@@ -217,13 +255,12 @@ namespace PDSA_CW
         // Method to check if an order with a given ID exists
         public bool OrderExists(int orderId)
         {
-            // Call the OrderExists with the root node
-            return OrderExists(root, orderId);
+            return OrderExistCheck(root, orderId);
         }
 
 
         // Private method to check if an order with a given ID exists
-        private bool OrderExists(TreeNode node, int orderId)
+        private bool OrderExistCheck(TreeNode node, int orderId)
         {
 
             // If the current node is null, the order isn't exist in this subtree so return false
@@ -231,14 +268,14 @@ namespace PDSA_CW
                 return false;
 
             // Compare the orderId of the current node with the given orderId
-            if (orderId < node.Order.OrderId)
+            if (orderId < node.Order.GetOrderId())
 
                 // If the given orderId is less search in the left subtree
-                return OrderExists(node.Left, orderId);
+                return OrderExistCheck(node.Left, orderId);
 
-            else if (orderId > node.Order.OrderId)
+            else if (orderId > node.Order.GetOrderId())
                 // If the given orderId is greater search in the right subtree
-                return OrderExists(node.Right, orderId);
+                return OrderExistCheck(node.Right, orderId);
 
             else
                 // If the orderId matches the current node's orderId, the order exists so return true
@@ -246,7 +283,7 @@ namespace PDSA_CW
         }
 
         // Method to display all orders in the binary tree
-        public void DisplayOrderss()
+        public void DisplayOrders()
         {
 
             // Check if the root node is null
@@ -256,28 +293,28 @@ namespace PDSA_CW
             }
             else
             {
-                Display(root); // If the root is not empty, call the private Display method starting from the root
+                SetDisplayData(root); // If the root is not empty, call the private Display method starting from the root
             }
         }
 
 
         // Method to recursively display orders in the binary tree in an in-order traversal
-        private void Display(TreeNode node)
+        private void SetDisplayData(TreeNode node)
         {
             // If the current node is not null
             if (node != null)
             {
-                Display(node.Left); // display orders in the left subtree
+                SetDisplayData(node.Left); // display orders in the left subtree
 
                 // Display the order details for the current node
-                Console.WriteLine($"Date & time: {node.Order.Date}\nOrder ID: {node.Order.OrderId}\nSupplier: {node.Order.Supplier}\nAddress: {node.Order.Address}\nProduct: {node.Order.ProductName}\nQuantity: {node.Order.Quantity}\nPrice: {node.Order.Price}\nVat: {node.Order.Vat}\nTotal: {node.Order.Total}\n");
+                Console.WriteLine($"Date & time: {node.Order.GetDate()}\nOrder ID: {node.Order.GetOrderId()}\nSupplier: {node.Order.GetSupplier()}\nAddress: {node.Order.GetAddress()}\nProduct: {node.Order.GetProductName()}\nQuantity: {node.Order.GetQuantity()}\nPrice: {node.Order.GetPrice()}\nVat: {node.Order.GetVat()}\nTotal: {node.Order.GetTotal()}\n");
 
-                Display(node.Right); // display orders in the right subtree
+                SetDisplayData(node.Right); // display orders in the right subtree
             }
         }
 
         // Method to display all orders in the sorted order
-        public void DisplayOrders()
+        public void DisplaySortedOrders()
         {
             // Check if there are no orders in the sorted list
             if (sortedOrders.Count == 0)
@@ -292,7 +329,7 @@ namespace PDSA_CW
             foreach (var order in sortedOrders)
             {
                 // Display the order details for each order
-                Console.WriteLine($"Date & time: {order.Date}\nOrder ID: {order.OrderId}\nSupplier: {order.Supplier}\nAddress: {order.Address}\nProduct: {order.ProductName}\nQuantity: {order.Quantity}\nPrice: {order.Price}\nVat: {order.Vat}\nTotal: {order.Total}\n");
+                Console.WriteLine($"Date & time: {order.GetDate()}\nOrder ID: {order.GetOrderId()}\nSupplier: {order.GetSupplier()}\nAddress: {order.GetAddress()}\nProduct: {order.GetProductName()}\nQuantity: {order.GetQuantity()}\nPrice: {order.GetPrice()}\nVat: {order.GetVat()}\nTotal: {order.GetTotal()}\n");
             }
         }
 
@@ -310,12 +347,12 @@ namespace PDSA_CW
             if (ascending)
             {
                 // Sort in ascending order
-                sortedOrders.Sort((x, y) => x.Total.CompareTo(y.Total));
+                sortedOrders.Sort((x, y) => x.GetTotal().CompareTo(y.GetTotal()));
             }
             else
             {
                 // Sort in descending order
-                sortedOrders.Sort((x, y) => y.Total.CompareTo(x.Total));
+                sortedOrders.Sort((x, y) => y.GetTotal().CompareTo(x.GetTotal()));
             }
         }
 
@@ -334,12 +371,29 @@ namespace PDSA_CW
                 GetOrdersInOrder(node.Right, orders);
             }
         }
+
+        // Get the count of orders
+        public int OrderCount()
+        {
+            return CountOrders(root);
+        }
+
+        // Count orders in the binary tree
+        private int CountOrders(TreeNode node)
+        {
+            if (node == null)
+                return 0;
+
+            return 1 + CountOrders(node.Left) + CountOrders(node.Right);
+        }
     }
 
     class Program
     {
         static void Main(string[] args)
         {
+            Console.Clear(); // Clear console
+
             // Creating an object of the puchase order system class
             POOrderSystem orderSystem = new POOrderSystem();
 
@@ -349,7 +403,7 @@ namespace PDSA_CW
             Console.WriteLine("-----------------------------");
 
             bool exit = false;
-
+            bool ordersAdded = false; // track whether orders are added or not
 
             // Loop to continuously display options until the user choose to exit
             while (!exit)
@@ -369,6 +423,8 @@ namespace PDSA_CW
                 // Reading user input from the options
                 string input = Console.ReadLine();
 
+               
+
                 // Switch statement to handle user selected options
                 switch (input)
                 {
@@ -377,7 +433,6 @@ namespace PDSA_CW
                         // Adding a Order Process
                         Console.WriteLine("\nEnter Order details");
                         Console.WriteLine("*******************\n");
-
                         int orderId;
                         while (true)
                         {
@@ -399,7 +454,7 @@ namespace PDSA_CW
                             }
                             else
                             {
-                                break; // Break the loop if one of the above cases triggered
+                                break; // Break the loop if none of the above cases triggered
                             }
                         }
 
@@ -467,74 +522,145 @@ namespace PDSA_CW
 
                         Order order = new Order(orderId, supplier, address, vat, productName, quantity, price);
                         orderSystem.AddOrder(order);
+
+                        ordersAdded = true; // Flag that takes the record that order added 
+
                         Console.WriteLine("\nOrder Added Successfully");
                         break;
 
                     case "2":
                         // Updating an existing order
-                        Console.WriteLine("\nUpdate Order");
-                        Console.WriteLine("************\n");
-                        Console.Write("Enter the Order ID to update: ");
-                        int updateOrderId = int.Parse(Console.ReadLine());
-                        if (orderSystem.OrderExists(updateOrderId))
+                        if (ordersAdded && orderSystem.OrderCount() > 0)
                         {
-                            Console.WriteLine("\nEnter order details to Update");
-                            Console.WriteLine("******************************\n");
+                            Console.WriteLine("\nUpdate Order");
+                            Console.WriteLine("************\n");
+                            Console.Write("Enter the Order ID to update: ");
+                            string updateOrderId = Console.ReadLine();
 
-                            Console.Write("Supplier: ");
-                            string updatedSupplier = Console.ReadLine();
-                            Console.Write("Address: ");
-                            string updatedAddress = Console.ReadLine();
-                            Console.Write("VAT (%): ");
-                            int updatedVat;
-                            while (!int.TryParse(Console.ReadLine(), out updatedVat) || updatedVat < 0 || updatedVat > 100)
+                            // Validations
+                            if (string.IsNullOrEmpty(updateOrderId))
                             {
-                                Console.WriteLine("Invalid VAT percentage. Please enter a value between 0 and 100.");
+                                Console.WriteLine("Order ID cannot be null or empty.");
+                            }
+                            else if (!int.TryParse(updateOrderId, out orderId) || orderId <= 0)
+                            {
+                                Console.WriteLine("Order ID must be a positive integer.");
+                            }
+                            else if (orderSystem.OrderExists(orderId))
+                            {
+                                Console.WriteLine("\nEnter order details to Update");
+                                Console.WriteLine("******************************\n");
+
+                                string updatedsupplier, updatedaddress, updatedproductName; // Declaring Variables
+
+                                do
+                                {
+                                    Console.Write("Supplier: ");
+                                    updatedsupplier = Console.ReadLine();
+
+                                    // Validate if the input is null or empty
+                                    if (string.IsNullOrEmpty(updatedsupplier))
+                                    {
+                                        Console.WriteLine("Supplier cannot be null or empty.");
+                                    }
+
+                                } while (string.IsNullOrEmpty(updatedsupplier)); // While the input is null or empty user should enter values again
+
+                                do
+                                {
+                                    Console.Write("Address: ");
+                                    updatedaddress = Console.ReadLine();
+
+                                    if (string.IsNullOrEmpty(updatedaddress))
+                                    {
+                                        Console.WriteLine("Address cannot be null or empty.");
+                                    }
+
+                                } while (string.IsNullOrEmpty(updatedaddress));
                                 Console.Write("VAT (%): ");
-                            }
+                                int updatedVat;
+                                while (!int.TryParse(Console.ReadLine(), out updatedVat) || updatedVat < 0 || updatedVat > 100)
+                                {
+                                    Console.WriteLine("Invalid VAT percentage. Please enter a value between 0 and 100.");
+                                    Console.Write("VAT (%): ");
+                                }
 
-                            Console.Write("Product Name: ");
-                            string updatedProductName = Console.ReadLine();
-                            Console.Write("Quantity: ");
-                            int updatedQuantity;
-                            while (!int.TryParse(Console.ReadLine(), out updatedQuantity) || updatedQuantity <= 0)
-                            {
-                                Console.WriteLine("Quantity must be a positive integer.");
+                                do
+                                {
+                                    Console.Write("Product Name: ");
+                                    updatedproductName = Console.ReadLine();
+                                    if (string.IsNullOrEmpty(updatedproductName))
+                                    {
+                                        Console.WriteLine("Product Name cannot be null or empty.");
+                                    }
+
+                                } while (string.IsNullOrEmpty(updatedproductName));
+
+
                                 Console.Write("Quantity: ");
-                            }
+                                int updatedQuantity;
+                                while (!int.TryParse(Console.ReadLine(), out updatedQuantity) || updatedQuantity <= 0)
+                                {
+                                    Console.WriteLine("Quantity must be a positive integer.");
+                                    Console.Write("Quantity: ");
+                                }
 
-                            Console.Write("Price: ");
-                            float updatedPrice;
-                            while (!float.TryParse(Console.ReadLine(), out updatedPrice) || updatedPrice <= 0)
-                            {
-                                Console.WriteLine("Price must be a positive number.");
                                 Console.Write("Price: ");
-                            }
+                                float updatedPrice;
+                                while (!float.TryParse(Console.ReadLine(), out updatedPrice) || updatedPrice <= 0)
+                                {
+                                    Console.WriteLine("Price must be a positive number.");
+                                    Console.Write("Price: ");
+                                }
 
-                            Order updatedOrder = new Order(updateOrderId, updatedSupplier, updatedAddress, updatedVat, updatedProductName, updatedQuantity, updatedPrice);
-                            orderSystem.UpdateOrder(updateOrderId, updatedOrder);
-                            Console.WriteLine("\nOrder Updated Successfully");
+                                int ordid = Convert.ToInt32(updateOrderId);
+
+                                Order updatedOrder = new Order(ordid, updatedsupplier, updatedaddress, updatedVat, updatedproductName, updatedQuantity, updatedPrice);
+                                orderSystem.UpdateOrder(ordid, updatedOrder);
+                                Console.WriteLine("\nOrder Updated Successfully");
+                            }
+                            else
+                            {
+                                Console.WriteLine("\nOrder ID does not exist.");
+                            }
                         }
                         else
                         {
-                            Console.WriteLine("\nOrder ID does not exist.");
+                            Console.WriteLine("\nPlease add an order first!");
                         }
-                        break;
+                       break;
 
                     case "3":
                         // Deleting an existing order
-                        Console.WriteLine("\nDelete Order");
-                        Console.WriteLine("************");
-                        Console.Write("\nEnter the Order ID to delete: ");
-                        int deleteOrderId = int.Parse(Console.ReadLine());
-                        if (orderSystem.OrderExists(deleteOrderId))
+                        if(ordersAdded && orderSystem.OrderCount() > 0)
                         {
-                            orderSystem.DeleteOrder(deleteOrderId);
-                            Console.WriteLine("Order Deleted Successfully");
+                            Console.WriteLine("\nDelete Order");
+                            Console.WriteLine("************");
+                            Console.Write("\nEnter the Order ID to delete: ");
+                            string deleteOrderId = Console.ReadLine();
+
+                            if (string.IsNullOrEmpty(deleteOrderId))
+                            {
+                                Console.WriteLine("Order ID cannot be null or empty.");
+                            }
+                            else if (!int.TryParse(deleteOrderId, out orderId) || orderId <= 0)
+                            {
+                                Console.WriteLine("Order ID must be a positive integer.");
+                            }
+                            else if (orderSystem.OrderExists(orderId))
+                            {
+                                int Doid = Convert.ToInt32(deleteOrderId);
+                                orderSystem.DeleteOrder(Doid);
+                                Console.WriteLine("\nOrder Deleted Successfully");
+                            }
+                            else
+                            {
+                                Console.WriteLine("\nOrder ID does not exist.");
+                            }
                         }
                         else
                         {
-                            Console.WriteLine("\nOrder ID does not exist.");
+                            Console.WriteLine("\nPlease add an order first!");
                         }
                         break;
 
@@ -542,21 +668,21 @@ namespace PDSA_CW
                         // Displaying all orders
                         Console.WriteLine("\nOrder/s Summary");
                         Console.WriteLine("***************\n");
-                        orderSystem.DisplayOrderss();
+                        orderSystem.DisplayOrders();
                         break;
 
                     case "5":
                         // Sorting orders from cheapest to most expensive
                         orderSystem.SortOrders(true);
                         Console.WriteLine("\nOrders sorted from Cheapest to Most Expensive:\n");
-                        orderSystem.DisplayOrders();
+                        orderSystem.DisplaySortedOrders();
                         break;
 
                     case "6":
                         // Sorting orders from most expensive to cheapest
                         orderSystem.SortOrders(false);
                         Console.WriteLine("\nOrders sorted from Most Expensive to Cheapest:\n");
-                        orderSystem.DisplayOrders();
+                        orderSystem.DisplaySortedOrders();
                         break;
 
                     case "7":
