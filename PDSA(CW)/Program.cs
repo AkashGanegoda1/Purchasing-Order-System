@@ -202,54 +202,84 @@ namespace PDSA_CW
         }
 
 
-        private TreeNode MinValue(TreeNode node) //  method to find the node with the minimum value in the subtree
+        // Method to find the node with the minimum value in the subtree
+        private TreeNode MinValue(TreeNode node)
         {
+
+            // While there is a left child node, keep looking to the left to find the minimum value
             while (node.Left != null)
             {
-                node = node.Left;
+                node = node.Left; // Move to the left child node
             }
-            return node;
+            return node; // Return the node with the minimum value
         }
-        public bool OrderExists(int orderId) // Method to check if an order with a given ID exists
+
+        // Method to check if an order with a given ID exists
+        public bool OrderExists(int orderId)
         {
+            // Call the OrderExists with the root node
             return OrderExists(root, orderId);
         }
 
-        private bool OrderExists(TreeNode node, int orderId) // Private method to check if an order with a given ID exists
+
+        // Private method to check if an order with a given ID exists
+        private bool OrderExists(TreeNode node, int orderId)
         {
+
+            // If the current node is null, the order isn't exist in this subtree so return false
             if (node == null)
                 return false;
 
+            // Compare the orderId of the current node with the given orderId
             if (orderId < node.Order.OrderId)
+
+                // If the given orderId is less search in the left subtree
                 return OrderExists(node.Left, orderId);
+
             else if (orderId > node.Order.OrderId)
+                // If the given orderId is greater search in the right subtree
                 return OrderExists(node.Right, orderId);
+
             else
+                // If the orderId matches the current node's orderId, the order exists so return true
                 return true;
         }
-        public void DisplayOrderss()     // Method to display all orders in the binary tree
+
+        // Method to display all orders in the binary tree
+        public void DisplayOrderss()
         {
+
+            // Check if the root node is null
             if (root == null)
             {
                 Console.WriteLine("No orders to display.");
             }
             else
             {
-                Display(root);
+                Display(root); // If the root is not empty, call the private Display method starting from the root
             }
         }
 
+
+        // Method to recursively display orders in the binary tree in an in-order traversal
         private void Display(TreeNode node)
         {
+            // If the current node is not null
             if (node != null)
             {
-                Display(node.Left);
+                Display(node.Left); // display orders in the left subtree
+
+                // Display the order details for the current node
                 Console.WriteLine($"Date & time: {node.Order.Date}\nOrder ID: {node.Order.OrderId}\nSupplier: {node.Order.Supplier}\nAddress: {node.Order.Address}\nProduct: {node.Order.ProductName}\nQuantity: {node.Order.Quantity}\nPrice: {node.Order.Price}\nVat: {node.Order.Vat}\nTotal: {node.Order.Total}\n");
-                Display(node.Right);
+
+                Display(node.Right); // display orders in the right subtree
             }
         }
-        public void DisplayOrders()         // Method to display all orders in the sorted order
+
+        // Method to display all orders in the sorted order
+        public void DisplayOrders()
         {
+            // Check if there are no orders in the sorted list
             if (sortedOrders.Count == 0)
             {
                 Console.WriteLine("No orders to display.");
@@ -257,23 +287,34 @@ namespace PDSA_CW
             }
 
             Console.WriteLine("Orders: ");
+
+            // Going through each order in the sorted list
             foreach (var order in sortedOrders)
             {
+                // Display the order details for each order
                 Console.WriteLine($"Date & time: {order.Date}\nOrder ID: {order.OrderId}\nSupplier: {order.Supplier}\nAddress: {order.Address}\nProduct: {order.ProductName}\nQuantity: {order.Quantity}\nPrice: {order.Price}\nVat: {order.Vat}\nTotal: {order.Total}\n");
             }
         }
 
-        public void SortOrders(bool ascending)   // Method to sort orders based on total cost
+        // Method to sort orders based on total cost
+        public void SortOrders(bool ascending)
         {
+
+            // Clear the sortedOrders list to be sure it's empty before sorting
             sortedOrders.Clear();
+
+            // sortedOrders list with orders using in-order traversal
             GetOrdersInOrder(root, sortedOrders);
 
+            // Sort the orders based on total cost in ascending or descending order
             if (ascending)
             {
+                // Sort in ascending order
                 sortedOrders.Sort((x, y) => x.Total.CompareTo(y.Total));
             }
             else
             {
+                // Sort in descending order
                 sortedOrders.Sort((x, y) => y.Total.CompareTo(x.Total));
             }
         }
